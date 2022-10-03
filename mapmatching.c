@@ -1,9 +1,10 @@
-// Jiri Hlavaty Map Matching v.0.2.1
+// Map Matching v.0.2.1
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
 #include <float.h>
+
 
 #include "mapmatching.h"
 
@@ -1928,4 +1929,3 @@ MM_ERRORS mm_map_match(MM_WS * ws, MM_REQUEST* mm_request, MM_RESPONSE* mm_respo
 
 	//return mm_map_match_recursive(ws, mm_request, mm_response);
 }
-
