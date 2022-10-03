@@ -96,8 +96,8 @@ typedef struct MM_GPS_POINT_W
 	double		latitude;		// latitude of vehicle
 	double		longitude;		// longitude of vehicle
 
-	int		heading;		// heading of vehicle
-	int			speed;			// speed of vehicle in km/h
+	int			heading;		// heading of vehicle
+	int			dist_to_next;	// distance from		
 	int			index;			
 } MM_GPS_PT_W;
 

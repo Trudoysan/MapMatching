@@ -817,7 +817,7 @@ void init_time_slots(MM_GPS_PT_W *gps_pts, int gps_count, TIMESLOT *tslots)
 	{
 		tslots[i].gps_pt = &gps_pts[i];
 
-		if ((gps_pts[i].latitude == gps_pts[i + 1].latitude) && (gps_pts[i].longitude == gps_pts[i + 1].longitude))
+	/*	if ((gps_pts[i].latitude == gps_pts[i + 1].latitude) && (gps_pts[i].longitude == gps_pts[i + 1].longitude))
 		{
 			tslots[i].dist_to_next = 0;
 		}
@@ -825,6 +825,8 @@ void init_time_slots(MM_GPS_PT_W *gps_pts, int gps_count, TIMESLOT *tslots)
 		{
 			tslots[i].dist_to_next = vzd_by_degree(gps_pts[i].longitude, gps_pts[i].latitude, gps_pts[i + 1].longitude, gps_pts[i + 1].latitude);
 		}
+	*/
+
 	}
 
 	tslots[gps_count - 1].gps_pt = &gps_pts[gps_count - 1]; // last time slot
@@ -1408,7 +1410,7 @@ void map_maptch_part(TIMESLOT *tslots, MM_MAP_PT_W *map_pts, Node *nodes, int gp
 				{
 					// double prob_ofset = get_emission_probability(abs(tslots[i].distances[r]-(tslots[i+1].distances[l])),5);
 					// prob_r_l *= prob_ofset;
-					dist_excess = abs(tslots[i].dist_to_next - route_dist);
+					dist_excess = abs(tslots[i].gps_pt->dist_to_next - route_dist);
 					prob_r_l = get_transition_probability(dist_excess /*, trans_param*/);
 					if (end_line_Node == tslots[i].last_Node[r])
 					{
@@ -1899,7 +1901,7 @@ MM_ERRORS mm_map_match(MM_WS *ws, MM_REQUEST *mm_request, MM_RESPONSE *mm_respon
 	gps_pts[0].latitude = mm_request->gps_pts[0].latitude;
 	gps_pts[0].longitude = mm_request->gps_pts[0].longitude;
 	gps_pts[0].heading = mm_request->gps_pts[0].heading;
-	gps_pts[0].speed = mm_request->gps_pts[0].speed;
+	gps_pts[0].dist_to_next = mm_request->gps_pts[0].dist_to_next;
 	gps_pts[0].index = 0;
 	gpscount = 1;
 
@@ -1917,14 +1919,14 @@ MM_ERRORS mm_map_match(MM_WS *ws, MM_REQUEST *mm_request, MM_RESPONSE *mm_respon
 				gps_pts[gpscount].latitude = mm_request->gps_pts[i - 1].latitude;
 				gps_pts[gpscount].longitude = mm_request->gps_pts[i - 1].longitude;
 				gps_pts[gpscount].heading = mm_request->gps_pts[i - 1].heading;
-				gps_pts[gpscount].speed = mm_request->gps_pts[i - 1].speed;
+				gps_pts[gpscount].dist_to_next = mm_request->gps_pts[i - 1].dist_to_next;
 				gps_pts[gpscount].index = i - 1;
 				gpscount++;
 			}
 			gps_pts[gpscount].latitude = mm_request->gps_pts[i].latitude;
 			gps_pts[gpscount].longitude = mm_request->gps_pts[i].longitude;
 			gps_pts[gpscount].heading = mm_request->gps_pts[i].heading;
-			gps_pts[gpscount].speed = mm_request->gps_pts[i].speed;
+			gps_pts[gpscount].dist_to_next = mm_request->gps_pts[i].dist_to_next;
 			gps_pts[gpscount].index = i;
 			gpscount++;
 			pts_skipped = 0;
