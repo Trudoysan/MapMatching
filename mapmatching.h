@@ -4,8 +4,8 @@
 #include <limits.h>
 #include "xdb.h"
 
-#define DEBUG
-#define DEBUG_SELECT
+//#define DEBUG
+//#define DEBUG_SELECT
 //#define DEBUG_START_END
 //#define	DEBUG_R
 //#define HEADING
@@ -98,7 +98,7 @@ typedef struct MM_GPS_POINT_W
 
 	int		heading;		// heading of vehicle
 	int			speed;			// speed of vehicle in km/h
-	int			index;			// speed of vehicle in km/h
+	int			index;			
 } MM_GPS_PT_W;
 
 

@@ -1,4 +1,4 @@
-// Trakm8 Map Matching v.0.1.1
+// Jiri Hlavaty Map Matching v.0.2.1
 
 #include <stdlib.h>
 #include <stdio.h>
