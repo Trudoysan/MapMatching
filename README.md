@@ -1,3 +1,3 @@
 MapMatching
 
-GPS route mtchinung to map (streets network)
+GPS route matching to map (streets network)
