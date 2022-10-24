@@ -769,6 +769,7 @@ static int snap_to_segment(WKBLINE *line, double gps_lon, double gps_lat, double
 	return 1;
 }
 
+//Hidden Markov Model emissions
 double get_emission_probability(double distance, double emis_param)
 {
 	// return 1 * (EMIS_COEF * exp (-0.5 * pow(distance / emis_param, 2)));
